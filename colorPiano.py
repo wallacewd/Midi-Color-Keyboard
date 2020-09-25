@@ -49,23 +49,23 @@ while running:
         raw = userInput.read(16)
 
         # Parse raw midi data into usable information:
-        OnOff = raw[0][0][0]                                # Returns the value 144 (key press) or 128 (key release)
-        midiNumber = raw[0][0][1]                           # Returns a number representative of the key you pressed
-        note = pygame.midi.midi_to_ansi_note(midiNumber)    # Takes midNumber and converts it to a note/octive value (ex: F#2, A-1, B0 etc)
-        noteSplit = re.split("[0-9]\Z|[-]", note)           # Splits "note" and creates a list containing the note name and octave value
-        justNote = noteSplit[0]                             # Returns the first value created by noteSplit. [0] = note name, [1] = octave number
-        noteColor = color[justNote]                         # Matches "justNote" to the dict "color" and grabs the correct RGB color value
+        OnOff = raw[0][0][0]                                            # Returns the value 144 (key press) or 128 (key release)
+        midiNumber = raw[0][0][1]                                       # Returns a number representative of the key you pressed
+        note = pygame.midi.midi_to_ansi_note(midiNumber)                # Takes midNumber and converts it to a note/octive value (ex: F#2, A-1, B0 etc)
+        noteSplit = re.split("[0-9]\Z|[-]", note)                       # Splits "note" and creates a list containing the note name and octave value
+        justNote = noteSplit[0]                                         # Returns the first value created by noteSplit. [0] = note name, [1] = octave number
+        noteColor = color[justNote]                                     # Matches "justNote" to the dict "color" and grabs the correct RGB color value
 
         # Key press/release events:
-        if OnOff == 144:                                    # Checks to see if the key is currently pressed down
+        if OnOff == 144:                                                # Checks to see if the key is currently pressed down
             printData(OnOff, justNote, raw)
-            screen.fill(noteColor)                          # Changes screen color to the new color from color dict
-            pygame.display.update()                         # Updates the display 
+            screen.fill(noteColor)                                      # Changes screen color to the new color from color dict
+            pygame.display.update()                                     # Updates the display 
 
-        else:                                               # Checks to see if there is no input, or key if key released
+        else:                                                           # Checks to see if there is no input, or key if key released
             printData(OnOff, justNote, raw)
-            if userSetting == "both":                       # If userSetting is set to both, the screen is set to black when the key is not pressed
-                screen.fill([0, 0, 0])                      # Changes the screen to black  
+            if userSetting == "both":                                   # If userSetting is set to both, the screen is set to black when the key is not pressed
+                screen.fill([0, 0, 0])                                  # Changes the screen to black  
                 pygame.display.update()                     
             else:                                           # If userSetting is set to "press", the screen will not change on key release 
                 pass
