@@ -3,4 +3,4 @@ def printData(myPress, myNote, raw):
       status = "Key Pressed  >> " 
    elif myPress == 128:
       status = "Key Released >> "
-      print(status, "Note: ",myNote)
+   print(status, "Note: ",myNote)
