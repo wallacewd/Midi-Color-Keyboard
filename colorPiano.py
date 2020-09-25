@@ -67,7 +67,7 @@ while running:
             if userSetting == "both":                                   # If userSetting is set to both, the screen is set to black when the key is not pressed
                 screen.fill([0, 0, 0])                                  # Changes the screen to black  
                 pygame.display.update()                     
-            else:                                           # If userSetting is set to "press", the screen will not change on key release 
+            else:                                                       # If userSetting is set to "press", the screen will not change on key release 
                 pass
 
 # End midi/exit program
